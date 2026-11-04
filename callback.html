@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Authorization - BONKA Auto Poster</title><link rel="stylesheet" href="style.css"></head><body>
+<header><a class="brand" href="index.html">BONKA Official</a><nav><a href="index.html">Home</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav></header>
+<main>
+<h1>TikTok authorization</h1>
+<p id="msg" class="muted">Waiting for authorization result…</p>
+<div id="box" hidden>
+<p>Copy this code and paste it into BONKA Auto Poster. It expires in a few minutes.</p>
+<textarea id="code" rows="4" readonly></textarea>
+<p><button id="copy">Copy code</button></p>
+</div>
+</main>
+<script>
+const p=new URLSearchParams(location.search),msg=document.getElementById('msg');
+if(p.get('code')){document.getElementById('box').hidden=false;document.getElementById('code').value=p.get('code');msg.textContent='Authorization successful.';}
+else if(p.get('error')){msg.textContent='Authorization failed: '+(p.get('error_description')||p.get('error'));}
+document.getElementById('copy').onclick=()=>{const t=document.getElementById('code');t.select();navigator.clipboard?navigator.clipboard.writeText(t.value):document.execCommand('copy');};
+</script>
+<footer>&copy; 2026 BONKA Official. Contact: <a href="mailto:CONTACT_EMAIL">CONTACT_EMAIL</a></footer></body></html>
